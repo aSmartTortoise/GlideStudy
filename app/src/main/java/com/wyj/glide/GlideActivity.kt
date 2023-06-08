@@ -17,7 +17,8 @@ class GlideActivity : AppCompatActivity() {
 //        private const val URL = ""
 
         // Gif资源
-        private const val GIF_URL = "http://p1.pstatp.com/large/166200019850062839d3"
+//        private const val GIF_URL = "http://p1.pstatp.com/large/166200019850062839d3"
+        private const val GIF_URL = "https://img.zcool.cn/community/01be175c613345a801203d222acdde.gif"
     }
 
     private var ivGlide: ImageView? = null;
@@ -35,7 +36,35 @@ class GlideActivity : AppCompatActivity() {
     }
 
     private fun load() {
-        loadStringWithNoCacheWithPlaceholder()
+//        loadStringWithNoCacheWithPlaceholder()
+//        loadGif()
+        loadAsBitmapFromGIF()
+    }
+
+    /**
+     *  如果加载的资源是GIF，但是希望展示的效果是静态图片，可以在Glide.with返回的RequestManager对象调用asBitmap方法。
+     */
+    private fun loadAsBitmapFromGIF() {
+        val options = RequestOptions()
+            .placeholder(ColorDrawable(Color.GRAY))
+            .error(ColorDrawable(Color.RED))
+            .fallback(ColorDrawable(Color.CYAN))
+            .skipMemoryCache(true)
+            .diskCacheStrategy(DiskCacheStrategy.NONE)
+        Glide.with(this).asBitmap().load(GIF_URL).apply(options).into(ivGlide!!)
+    }
+
+    /**
+     *  加载GIF
+     */
+    private fun loadGif() {
+        val options = RequestOptions()
+            .placeholder(ColorDrawable(Color.GRAY))
+            .error(ColorDrawable(Color.RED))
+            .fallback(ColorDrawable(Color.CYAN))
+            .skipMemoryCache(true)
+            .diskCacheStrategy(DiskCacheStrategy.NONE)
+        Glide.with(this).load(GIF_URL).apply(options).into(ivGlide!!)
     }
 
     /**
