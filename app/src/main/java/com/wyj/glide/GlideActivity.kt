@@ -4,11 +4,9 @@ import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
 import android.widget.ImageView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
-import com.bumptech.glide.load.engine.cache.DiskCache
 import com.bumptech.glide.request.RequestOptions
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
@@ -37,6 +35,13 @@ class GlideActivity : AppCompatActivity() {
     }
 
     private fun load() {
+        loadStringWithNoCacheWithPlaceholder()
+    }
+
+    /**
+     *  通过RequestOptions设置占位图placeholder、error、fallback。并设置不使用内存缓存和磁盘缓存。
+     */
+    private fun loadStringWithNoCacheWithPlaceholder() {
         val options = RequestOptions()
             .placeholder(ColorDrawable(Color.GRAY))
             .error(ColorDrawable(Color.RED))
