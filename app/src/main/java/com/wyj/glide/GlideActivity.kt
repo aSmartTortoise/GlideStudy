@@ -38,7 +38,27 @@ class GlideActivity : AppCompatActivity() {
     private fun load() {
 //        loadStringWithNoCacheWithPlaceholder()
 //        loadGif()
-        loadAsBitmapFromGIF()
+//        loadAsBitmapFromGIF()
+        loadGivenSizePic()
+    }
+
+    /**
+     *  通过RequestBuild.override指定加载图片资源的大小，
+     *  图片大小为 100 * 100像素。
+     *  通常Glide会自行判断ImageView的尺寸，将响应大小的图片加载到内存中。节省内存。
+     */
+    private fun loadGivenSizePic() {
+        val options = RequestOptions()
+            .placeholder(ColorDrawable(Color.GRAY))
+            .error(ColorDrawable(Color.RED))
+            .fallback(ColorDrawable(Color.CYAN))
+            .skipMemoryCache(true)
+            .diskCacheStrategy(DiskCacheStrategy.NONE)
+        Glide.with(this)
+            .load(URL)
+            .apply(options)
+            .override(100, 100)
+            .into(ivGlide!!)
     }
 
     /**
