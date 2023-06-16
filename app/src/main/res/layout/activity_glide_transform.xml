@@ -4,25 +4,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".GlideTransformActivity">
 
-    <Button
-        android:id="@+id/btn"
+    <ImageView
+        android:id="@+id/ivGlide"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="glide study"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/btn_transform"
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="glide transform"
-        app:layout_constraintStart_toStartOf="@id/btn"
-        app:layout_constraintTop_toBottomOf="@id/btn" />
+        android:layout_margin="24dp"
+        android:src="@drawable/btn_camera"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:contentDescription="加载" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

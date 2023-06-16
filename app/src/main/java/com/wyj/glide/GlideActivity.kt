@@ -1,6 +1,7 @@
 package com.wyj.glide
 
 import android.graphics.Color
+import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -17,11 +18,10 @@ class GlideActivity : AppCompatActivity() {
 //        private const val URL = ""
 
         // Gif资源
-//        private const val GIF_URL = "http://p1.pstatp.com/large/166200019850062839d3"
         private const val GIF_URL = "https://img.zcool.cn/community/01be175c613345a801203d222acdde.gif"
     }
 
-    private var ivGlide: ImageView? = null;
+    private var ivGlide: ImageView? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,17 +29,14 @@ class GlideActivity : AppCompatActivity() {
         findViewById<FloatingActionButton>(R.id.fab).setOnClickListener {
             load()
         }
-
         ivGlide = findViewById<ImageView>(R.id.ivGlide)
-
-
     }
 
     private fun load() {
-//        loadStringWithNoCacheWithPlaceholder()
+        loadStringWithNoCacheWithPlaceholder()
 //        loadGif()
 //        loadAsBitmapFromGIF()
-        loadGivenSizePic()
+//        loadGivenSizePic()
     }
 
     /**
@@ -95,8 +92,8 @@ class GlideActivity : AppCompatActivity() {
             .placeholder(ColorDrawable(Color.GRAY))
             .error(ColorDrawable(Color.RED))
             .fallback(ColorDrawable(Color.CYAN))
-            .skipMemoryCache(true)
-            .diskCacheStrategy(DiskCacheStrategy.NONE)
+//            .skipMemoryCache(true)
+//            .diskCacheStrategy(DiskCacheStrategy.NONE)
         Glide.with(this).load(URL).apply(options).into(ivGlide!!)
     }
 }
