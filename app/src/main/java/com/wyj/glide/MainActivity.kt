@@ -14,9 +14,15 @@ class MainActivity : AppCompatActivity() {
                 startActivity(Intent(this@MainActivity, GlideActivity::class.java))
             }
         }
-        findViewById<Button>(R.id.btn_transform).apply {
+        findViewById<Button>(R.id.btn_transform_scale).apply {
             setOnClickListener {
                 startActivity(Intent(this@MainActivity, GlideTransformScaleActivity::class.java))
+            }
+        }
+
+        findViewById<Button>(R.id.btn_transform).apply {
+            setOnClickListener {
+                startActivity(Intent(this@MainActivity, GlideTransformActivity::class.java))
             }
         }
     }

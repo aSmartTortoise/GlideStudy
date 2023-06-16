@@ -17,12 +17,21 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
+        android:id="@+id/btn_transform_scale"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="glide transform scale"
+        app:layout_constraintStart_toStartOf="@id/btn"
+        app:layout_constraintTop_toBottomOf="@id/btn" />
+
+    <Button
         android:id="@+id/btn_transform"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:text="glide transform"
         app:layout_constraintStart_toStartOf="@id/btn"
-        app:layout_constraintTop_toBottomOf="@id/btn" />
+        app:layout_constraintTop_toBottomOf="@id/btn_transform_scale" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
