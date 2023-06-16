@@ -3,7 +3,6 @@ package com.wyj.glide
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
 import android.widget.Button
 
 class MainActivity : AppCompatActivity() {
@@ -17,7 +16,7 @@ class MainActivity : AppCompatActivity() {
         }
         findViewById<Button>(R.id.btn_transform).apply {
             setOnClickListener {
-                startActivity(Intent(this@MainActivity, GlideTransformActivity::class.java))
+                startActivity(Intent(this@MainActivity, GlideTransformScaleActivity::class.java))
             }
         }
     }
