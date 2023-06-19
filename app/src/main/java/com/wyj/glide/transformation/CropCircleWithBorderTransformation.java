@@ -43,7 +43,7 @@ public class CropCircleWithBorderTransformation extends BitmapTransformation {
 
   public CropCircleWithBorderTransformation() {
     this.borderSize = 4 * (int) Resources.getSystem().getDisplayMetrics().density;
-    this.borderColor = Color.BLACK;
+    this.borderColor = Color.RED;
   }
 
   @Override

@@ -1,5 +1,6 @@
 package com.wyj.glide
 
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageView
@@ -9,7 +10,10 @@ import com.bumptech.glide.load.resource.bitmap.CircleCrop
 import com.bumptech.glide.load.resource.bitmap.FitCenter
 import com.bumptech.glide.load.resource.bitmap.Rotate
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
+import com.bumptech.glide.request.RequestOptions
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.wyj.glide.transformation.CircleBorderTransform
+import com.wyj.glide.transformation.CropCircleWithBorderTransformation
 
 class GlideTransformActivity : AppCompatActivity() {
     companion object {
@@ -51,10 +55,12 @@ class GlideTransformActivity : AppCompatActivity() {
             .load(URL)
             .transform(MultiTransformation(FitCenter(), RoundedCorners(303 ushr 1)))
             .into(ivGlide3!!)
-
+//
+        val requestOptions = RequestOptions()
+            .transform(CircleBorderTransform( 4.0f, Color.parseColor("#3498db")))
         Glide.with(this)
             .load(URL)
-            .transform(CircleCrop())
+            .apply(requestOptions)
             .into(ivGlide4!!)
     }
 }
