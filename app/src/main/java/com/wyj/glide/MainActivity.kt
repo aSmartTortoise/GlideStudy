@@ -25,5 +25,11 @@ class MainActivity : AppCompatActivity() {
                 startActivity(Intent(this@MainActivity, GlideTransformActivity::class.java))
             }
         }
+
+        findViewById<Button>(R.id.btn_extension).apply {
+            setOnClickListener {
+                startActivity(Intent(this@MainActivity, GlideExtensionActivity::class.java))
+            }
+        }
     }
 }
