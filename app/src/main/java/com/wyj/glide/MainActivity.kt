@@ -31,5 +31,11 @@ class MainActivity : AppCompatActivity() {
                 startActivity(Intent(this@MainActivity, GlideExtensionActivity::class.java))
             }
         }
+
+        findViewById<Button>(R.id.btn_progress).apply {
+            setOnClickListener {
+                startActivity(Intent(this@MainActivity, GlideImageProgressActivity::class.java))
+            }
+        }
     }
 }

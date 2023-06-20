@@ -15,6 +15,13 @@
         android:theme="@style/Theme.GlideStudy"
         tools:targetApi="31">
         <activity
+            android:name=".GlideImageProgressActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".GlideExtensionActivity"
             android:exported="false">
             <meta-data
