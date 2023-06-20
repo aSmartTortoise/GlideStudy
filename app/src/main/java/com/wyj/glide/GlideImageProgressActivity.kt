@@ -13,6 +13,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.wyj.glide.glidemodule.GlideApp
 import com.wyj.glide.net.OnProgressChangeListener
 import com.wyj.glide.net.ProgressInterceptor
+import com.wyj.glide.ui.ProgressImageTarget
 
 class GlideImageProgressActivity : AppCompatActivity() {
     companion object {
@@ -36,40 +37,12 @@ class GlideImageProgressActivity : AppCompatActivity() {
     }
 
     private fun load() {
-        val progressDialog = ProgressDialog(this)
-        progressDialog.setProgressStyle(ProgressDialog.BUTTON_POSITIVE)
-        progressDialog.setMessage("加载中")
-        ProgressInterceptor.addListener(URL, object : OnProgressChangeListener {
-            override fun onProgress(progress: Int) {
-                progressDialog.progress = progress
-            }
-        })
         GlideApp
             .with(this)
             .load(URL)
+            .progress(this)
             .diskCacheStrategy(DiskCacheStrategy.NONE)
-            .placeholder(R.color.colorLoading)
             .error(R.color.colorError)
-            .into(object : DrawableImageViewTarget(ivGlide) {
-                override fun onLoadStarted(placeholder: Drawable?) {
-                    super.onLoadStarted(placeholder)
-                    progressDialog.show()
-                }
-
-                override fun onLoadFailed(errorDrawable: Drawable?) {
-                    super.onLoadFailed(errorDrawable)
-                    progressDialog.dismiss()
-                    ProgressInterceptor.removeListener(URL)
-                }
-
-                override fun onResourceReady(
-                    resource: Drawable,
-                    transition: Transition<in Drawable>?
-                ) {
-                    super.onResourceReady(resource, transition)
-                    progressDialog.dismiss()
-                    ProgressInterceptor.removeListener(URL)
-                }
-            })
+            .into(ProgressImageTarget(URL, ivGlide!!))
     }
 }

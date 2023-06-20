@@ -1,4 +1,4 @@
-package com.wyj.glide.glideextention
+package com.wyj.glide.extention
 
 import com.bumptech.glide.RequestBuilder
 import com.bumptech.glide.annotation.GlideExtension
