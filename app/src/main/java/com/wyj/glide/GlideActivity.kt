@@ -1,7 +1,6 @@
 package com.wyj.glide
 
 import android.graphics.Color
-import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -93,7 +92,12 @@ class GlideActivity : AppCompatActivity() {
             .error(ColorDrawable(Color.RED))
             .fallback(ColorDrawable(Color.CYAN))
 //            .skipMemoryCache(true)
-//            .diskCacheStrategy(DiskCacheStrategy.NONE)
-        Glide.with(this).load(URL).apply(options).into(ivGlide!!)
+            .diskCacheStrategy(DiskCacheStrategy.NONE)
+        Glide
+            .with(this)
+            .asBitmap()
+            .load(URL)
+            .apply(options)
+            .into(ivGlide!!)
     }
 }
