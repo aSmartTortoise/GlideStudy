@@ -8,7 +8,7 @@ import com.bumptech.glide.request.transition.Transition
 import com.wyj.glide.net.OnProgressChangeListener
 import com.wyj.glide.net.ProgressInterceptor
 
-class ProgressImageTarget<T>(private val url: String, imageView: ImageView) :
+class ProgressImageViewTarget<T>(private val url: String, imageView: ImageView) :
     ImageViewTarget<T>(imageView) {
 
     override fun onLoadStarted(placeholder: Drawable?) {

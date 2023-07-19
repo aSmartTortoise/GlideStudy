@@ -1,19 +1,12 @@
 package com.wyj.glide
 
-import android.app.ProgressDialog
-import android.graphics.drawable.Drawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageView
-import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
-import com.bumptech.glide.request.target.DrawableImageViewTarget
-import com.bumptech.glide.request.transition.Transition
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.wyj.glide.glidemodule.GlideApp
-import com.wyj.glide.net.OnProgressChangeListener
-import com.wyj.glide.net.ProgressInterceptor
-import com.wyj.glide.ui.ProgressImageTarget
+import com.wyj.glide.ui.ProgressImageViewTarget
 
 class GlideImageProgressActivity : AppCompatActivity() {
     companion object {
@@ -43,6 +36,6 @@ class GlideImageProgressActivity : AppCompatActivity() {
             .progress(this)
             .diskCacheStrategy(DiskCacheStrategy.NONE)
             .error(R.color.colorError)
-            .into(ProgressImageTarget(URL, ivGlide!!))
+            .into(ProgressImageViewTarget(URL, ivGlide!!))
     }
 }

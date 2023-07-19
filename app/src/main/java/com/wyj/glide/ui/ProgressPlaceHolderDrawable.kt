@@ -49,7 +49,7 @@ class ProgressPlaceHolderDrawable(
         if (radius > dp30 * 1.25) {
             radius = dp30
         } else {
-            radius * 0.85f
+            radius *= 0.85f
         }
         paint.style = Paint.Style.STROKE
         canvas.drawCircle(centerX, centerY, radius, paint)
