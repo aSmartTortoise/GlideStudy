@@ -11,7 +11,19 @@ import okio.Okio
 class ProgressResponseBody(private val originalResponseBody: ResponseBody, url: String)
     : ResponseBody() {
 
-    private var listener = ProgressInterceptor.getListener(url)
+    companion object {
+        const val TAG = "ProgressResponseBody"
+    }
+
+    private var listener: OnProgressChangeListener? = null
+
+    init {
+        listener = ProgressInterceptor.getListener(url)?.apply {
+            onGetContentLength(originalResponseBody.contentLength())
+        }
+    }
+
+
     private val bufferedSource = Okio.buffer(object : ForwardingSource(originalResponseBody.source()) {
         private var totalBytesRead = 0L
         private var currentProgress = 0
@@ -23,10 +35,11 @@ class ProgressResponseBody(private val originalResponseBody: ResponseBody, url: 
                     totalBytesRead += this
                 }
                 val progress = (100 * totalBytesRead / contentLength()).toInt()
-                Log.d("ProgressResponseBody", "read: progress:$progress")
+//                Log.d("ProgressResponseBody", "read: progress:$progress")
                 if (progress != currentProgress) {
                     currentProgress = progress
                     listener?.onProgress(currentProgress)
+                    listener?.onGetCurrentSize(totalBytesRead)
                 }
                 if (totalBytesRead == contentLength()) {
                     listener = null
