@@ -21,6 +21,7 @@ class GlideActivity : AppCompatActivity() {
     }
 
     private var ivGlide: ImageView? = null
+    private var ivGlideGiveSize: ImageView? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,6 +30,7 @@ class GlideActivity : AppCompatActivity() {
             load()
         }
         ivGlide = findViewById<ImageView>(R.id.ivGlide)
+        ivGlideGiveSize = findViewById<ImageView>(R.id.ivGlideGiveSize)
     }
 
     private fun load() {
@@ -41,7 +43,7 @@ class GlideActivity : AppCompatActivity() {
     /**
      *  通过RequestBuild.override指定加载图片资源的大小，
      *  图片大小为 100 * 100像素。
-     *  通常Glide会自行判断ImageView的尺寸，将响应大小的图片加载到内存中。节省内存。
+     *  通常Glide会自行判断ImageView的尺寸，将相应大小的图片加载到内存中。节省内存。
      */
     private fun loadGivenSizePic() {
         val options = RequestOptions()
@@ -54,7 +56,7 @@ class GlideActivity : AppCompatActivity() {
             .load(URL)
             .apply(options)
             .override(100, 100)
-            .into(ivGlide!!)
+            .into(ivGlideGiveSize!!)
     }
 
     /**
@@ -91,8 +93,8 @@ class GlideActivity : AppCompatActivity() {
             .placeholder(ColorDrawable(Color.GRAY))
             .error(ColorDrawable(Color.RED))
             .fallback(ColorDrawable(Color.CYAN))
-//            .skipMemoryCache(true)
-            .diskCacheStrategy(DiskCacheStrategy.NONE)
+//            .skipMemoryCache(false)
+//            .diskCacheStrategy(DiskCacheStrategy.DATA)
         Glide
             .with(this)
             .asBitmap()

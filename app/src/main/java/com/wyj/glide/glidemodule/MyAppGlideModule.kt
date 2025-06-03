@@ -19,6 +19,10 @@ import java.io.InputStream
 @Excludes(value = [MyGlideModule::class, MyLibraryGlideModule::class, OkHttpLibraryGlideModule::class])
 class MyAppGlideModule : AppGlideModule() {
 
+    override fun isManifestParsingEnabled(): Boolean {
+        return super.isManifestParsingEnabled()
+    }
+
     override fun applyOptions(context: Context, builder: GlideBuilder) {
         super.applyOptions(context, builder)
         builder.setDiskCache(ExternalPreferredCacheDiskCacheFactory(context))

@@ -6,6 +6,7 @@ import android.widget.ImageView
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.wyj.glide.glidemodule.GlideApp
+//import com.wyj.glide.glidemodule.GlideApp
 import com.wyj.glide.ui.ProgressImageViewTarget
 
 class GlideImageProgressActivity : AppCompatActivity() {

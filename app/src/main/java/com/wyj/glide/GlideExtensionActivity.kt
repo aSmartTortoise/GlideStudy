@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageView
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
-import com.bumptech.glide.load.resource.bitmap.FitCenter
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.wyj.glide.glidemodule.GlideApp
 

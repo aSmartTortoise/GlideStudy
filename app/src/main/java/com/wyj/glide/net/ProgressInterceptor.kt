@@ -17,7 +17,7 @@ class ProgressInterceptor : Interceptor {
         }
     }
     override fun intercept(chain: Interceptor.Chain): Response {
-        var request = chain.request()
+        val request = chain.request()
         val response = chain.proceed(request)
         val url = request.url().toString()
         val responseBody = response.body() ?: return response
